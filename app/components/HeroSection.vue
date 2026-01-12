@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import heroBg from '~/assets/images/hero-bg-1.jpg?url'
 
 const titleRef = ref(null)
+const subheaderRef = ref<HTMLElement | null>(null)
 const subtitleRef = ref(null)
 const ctaRef = ref(null)
 const carRef = ref(null)
@@ -65,6 +66,51 @@ onMounted(() => {
     yoyo: true,
     ease: 'sine.inOut'
   })
+
+  // Smooth Text Cycle Animation
+  const words = ["Night Race Street", "Underground Circuit", "Midnight Velocity"]
+  let wordIndex = 0
+  
+  const cycleText = () => {
+    const element = subheaderRef.value
+    if (!element) return
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setTimeout(cycleText, 2500)
+      }
+    })
+
+    // Fade out and move up
+    tl.to(element, {
+      y: -20,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.in',
+      onComplete: () => {
+        // Change text while invisible
+        wordIndex = (wordIndex + 1) % words.length
+        if (element) {
+          const nextWord = words[wordIndex]
+          if (nextWord) element.innerText = nextWord
+        }
+      }
+    })
+    
+    // Set set initial position for entry (move down)
+    tl.set(element, { y: 20 })
+
+    // Fade in and move to center
+    tl.to(element, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: 'power2.out'
+    })
+  }
+
+  // Start sequence with a delay
+  setTimeout(cycleText, 2000)
 })
 
 const onRegistration = () => {
@@ -91,7 +137,7 @@ const onCategories = () => {
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="max-w-2xl">
           <div ref="titleRef" class="overflow-hidden">
-             <h2 class="text-xl md:text-2xl font-bold text-red-600 tracking-[0.2em] mb-4 uppercase">
+             <h2 ref="subheaderRef" class="text-xl md:text-2xl font-bold text-red-600 tracking-[0.2em] mb-4 uppercase h-8">
               Night Race Street
              </h2>
              <h1 class="text-5xl md:text-8xl font-black leading-none mb-6 italic tracking-tighter">

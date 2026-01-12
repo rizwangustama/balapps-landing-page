@@ -135,7 +135,7 @@ onMounted(() => {
             class="h-full bg-white/5 backdrop-blur-xl border-t border-l border-white/10 rounded-2xl p-6 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
             :class="[
               tier.highlight 
-                ? 'border-red-500/50 shadow-[0_0_50px_-10px_rgba(220,38,38,0.3)] scale-105 z-10 bg-gradient-to-b from-red-900/10 to-transparent' 
+                ? 'border-red-500/50 shadow-[0_0_50px_-10px_rgba(220,38,38,0.3)] scale-105 z-10 bg-linear-to-b from-red-900/10 to-transparent' 
                 : 'border-white/5 hover:border-red-500/50 hover:bg-white/10 hover:shadow-[0_20px_40px_-5px_rgba(220,38,38,0.15)] hover:-translate-y-2 hover:scale-[1.02] active:scale-95'
             ]"
           >
