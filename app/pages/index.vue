@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // Page metadata
 useHead({
-  title: 'Voltage Motors | The Future of Electric',
+  title: 'Super Street Race | With Start Night Race Series',
   meta: [
-    { name: 'description', content: 'Discover the next generation of electric vehicles. Performance, luxury, and sustainability combined.' }
+    { name: 'description', content: 'Super Street Race With Start Race Series' }
   ]
 })
 </script>
